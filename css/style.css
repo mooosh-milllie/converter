@@ -62,6 +62,7 @@ select::-ms-expand {
   height: 40px;
   font-size: 17px;
   padding-left: 10px;
+  border-radius: none;
 }
 #result-output {
   font-size: 20px;
