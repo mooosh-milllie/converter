@@ -18,7 +18,7 @@ p {
   color: white;
 }
 .converter-wrapper {
-  width: 60%;
+  width: 700px;
   height: 400px;
   margin: 60px auto 0;
   border: 3px solid rgb(184, 117, 120);
@@ -38,6 +38,14 @@ p {
   width: 47%;
   height: 35px;
   font-size: 18px;
+  line-height: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('../img/select-arrow.svg') no-repeat 100% 50%;
+  background-color: antiquewhite;
+}
+select::-ms-expand {
+  display: none;
 }
 .input-holder select:focus {
   outline: none;
@@ -76,48 +84,60 @@ p {
 }
 
 @media (max-width: 900px) {
+  
   main {
     width: 100%;
   }
   .converter-wrapper {
-    width: 80%;
-    height: 400px;
-    margin: 30px auto 0;
+    /* width: 94%; */
+    height: 350px;
+    margin: 20px auto 0;
     border: 3px solid rgb(184, 117, 120);
-    border-radius: 4px;
   }
   .input-holder  {
     width: 100%;
     margin: 10% auto 0;
   }
+  .input-holder input {
+    width: 47%;
+  }
 }
 
-@media (max-width: 700px) {
+@media(max-width:750px) {
   .converter-wrapper {
+    width: 96%;
+  }
+  .input-holder {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .input-holder input {
     width: 90%;
+    margin: auto;
+  }
+  .select-error-span {
+    width: 90%;
+    margin: auto;
+  }
+  #error-message {
+    font-size: 17px;
   }
 }
 
 @media (max-width: 500px) {
+  h1 {
+    font-size: 22px;
+  }
+  p {
+    font-size: 13.5px;
+  }
   .converter-wrapper {
-    width: 96%;
+    width: 98%;
     height: 300px;
-    margin: 30px auto 0;
-    border: 3px solid rgb(184, 117, 120);
-    border-radius: 4px;
   }
   .input-holder  {
-    width: 100%;
     margin: 3% auto 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .input-holder input {
-    width: 95%;
-    /* height: 40px;
-    font-size: 17px;
-    padding-left: 10px; */
   }
   .input-holder select {
     width: 70%;
