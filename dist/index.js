@@ -1,6 +1,6 @@
 "use strict";
 let inputElement = document.getElementById('input');
-let ResultDisplay = document.getElementById('result-output');
+let resultDisplay = document.getElementById('result-output');
 let converterTitle = document.getElementById('converter-title');
 let errorMessage = document.getElementById('error-message');
 const selectElement = document.getElementById('selectCoverter');
@@ -8,50 +8,48 @@ let convertBtn = document.getElementById('calculate-difference');
 selectElement.onchange = function () {
     let chosenOption = selectElement.options.selectedIndex;
     converterTitle.innerHTML = selectElement.options[chosenOption].innerHTML;
-    inputElement.value = '';
+    clearInputFields();
 };
 convertBtn.addEventListener('click', () => {
+    if (inputElement.value === '' && selectElement.value === '') {
+        errorMessageHandler();
+        return;
+    }
+    if (inputElement.value === '' && selectElement.value !== '') {
+        errorMessageHandler("convert value cannot be empty!");
+        return;
+    }
     let inputToConvert = Number(inputElement.value);
     switch (selectElement.value) {
         case "fahrenheit":
-            ResultDisplay.value = `${fahreinheitToCelcius(inputToConvert)}°C`;
-            clearInputFields();
+            resultDisplay.value = `${fahreinheitToCelcius(inputToConvert)}°C`;
             break;
         case "celsius":
-            ResultDisplay.value = `${celciusToFahrenheit(inputToConvert)}°F`;
-            clearInputFields();
+            resultDisplay.value = `${celciusToFahrenheit(inputToConvert)}°F`;
             break;
         case "miles":
-            ResultDisplay.value = `${milesToKilometer(inputToConvert)}km`;
-            clearInputFields();
+            resultDisplay.value = `${milesToKilometer(inputToConvert)}km`;
             break;
         case "kilometer":
-            ResultDisplay.value = `${kilometersToMiles(inputToConvert)}m`;
-            clearInputFields();
+            resultDisplay.value = `${kilometersToMiles(inputToConvert)}m`;
             break;
         case "pounds":
-            ResultDisplay.value = `${poundsToKilograms(inputToConvert).toFixed(2)}kg`;
-            clearInputFields();
+            resultDisplay.value = `${poundsToKilograms(inputToConvert).toFixed(2)}kg`;
             break;
         case "kilograms":
-            ResultDisplay.value = `${KilogramsToPounds(inputToConvert).toFixed(2)}lbs`;
-            clearInputFields();
+            resultDisplay.value = `${KilogramsToPounds(inputToConvert).toFixed(2)}lbs`;
             break;
         case "kilometreToMeter":
-            ResultDisplay.value = `${KilometreToMeter(inputToConvert)}m`;
-            clearInputFields();
+            resultDisplay.value = `${KilometreToMeter(inputToConvert)}m`;
             break;
         case "meterToKilometre":
-            ResultDisplay.value = `${meterToKilometer(inputToConvert)}km`;
-            clearInputFields();
+            resultDisplay.value = `${meterToKilometer(inputToConvert)}km`;
             break;
         case "centimeterToMeter":
-            ResultDisplay.value = `${centimeterToMeter(inputToConvert)}m`;
-            clearInputFields();
+            resultDisplay.value = `${centimeterToMeter(inputToConvert)}m`;
             break;
         case "meterToCentimeter":
-            ResultDisplay.value = `${meterToCentimeter(inputToConvert)}cm`;
-            clearInputFields();
+            resultDisplay.value = `${meterToCentimeter(inputToConvert)}cm`;
             break;
         default:
             errorMessageHandler();
@@ -60,9 +58,10 @@ convertBtn.addEventListener('click', () => {
 });
 function clearInputFields() {
     inputElement.value = '';
+    resultDisplay.value = '';
 }
-function errorMessageHandler() {
-    errorMessage.innerHTML = "please select a converter!";
+function errorMessageHandler(message = "please select a converter!") {
+    errorMessage.innerHTML = message;
     setTimeout(() => {
         errorMessage.innerHTML = '';
     }, 3000);

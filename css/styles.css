@@ -36,7 +36,8 @@ p {
 }
 .input-holder select {
   width: 47%;
-  height: 30px;
+  height: 35px;
+  font-size: 18px;
 }
 .input-holder select:focus {
   outline: none;
@@ -73,6 +74,62 @@ p {
   background-color: black;
   margin: 10px auto 0;
 }
-/* #selectCoverter {
-  display: block;
-} */
+
+@media (max-width: 900px) {
+  main {
+    width: 100%;
+  }
+  .converter-wrapper {
+    width: 80%;
+    height: 400px;
+    margin: 30px auto 0;
+    border: 3px solid rgb(184, 117, 120);
+    border-radius: 4px;
+  }
+  .input-holder  {
+    width: 100%;
+    margin: 10% auto 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .converter-wrapper {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .converter-wrapper {
+    width: 96%;
+    height: 300px;
+    margin: 30px auto 0;
+    border: 3px solid rgb(184, 117, 120);
+    border-radius: 4px;
+  }
+  .input-holder  {
+    width: 100%;
+    margin: 3% auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .input-holder input {
+    width: 95%;
+    /* height: 40px;
+    font-size: 17px;
+    padding-left: 10px; */
+  }
+  .input-holder select {
+    width: 70%;
+  }
+  #error-message {
+    font-size: 15px;
+  }
+  .select-error-span {
+    display: flex;
+    flex-direction: column;
+  }
+  .input-holder button {
+    width: 100px;
+  }
+}
